@@ -1,0 +1,17 @@
+{
+  "name": "mongoconsumer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "mongoConsumer.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "kafka-node": "^2.2.3",
+    "mongoose": "^4.11.13",
+    "optimist": "^0.6.1",
+    "test-bugger": "^1.1.0"
+  }
+}
