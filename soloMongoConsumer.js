@@ -29,15 +29,19 @@ consumer.on('message', async function(kafkaReceivedObject) {
         var messageObject = JSON.parse(kafkaReceivedObject.value)
         testBugger.successLog(messageObject);
         var inserted = await mongoWrapper.push(messageObject)
-        if(inserted) {
-            consumer.commit(function (err,data) {
-                if(err){
-                    console.log("Commit Error: "+err)
-                } else {
-                    console.log("Commit Responce: "+JSON.stringify(data))
-                }
-            })
-        }
+
+        setImmediate(function() {
+
+            if (inserted) {
+                consumer.commit(function (err, data) {
+                    if (err) {
+                        console.log("Commit Error: " + err)
+                    } else {
+                        console.log("Commit Responce: " + JSON.stringify(data))
+                    }
+                })
+            }
+        })
 
     } catch(err) {
         testBugger.errorLog("Error In Json Patsing")
